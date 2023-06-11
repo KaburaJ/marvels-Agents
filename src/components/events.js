@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function Events() {
+function Events({isOpen}) {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(9);
+  const [itemsPerPage] = useState(12);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -31,6 +32,7 @@ function Events() {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
+  
 
   const totalPages = Math.ceil(events.length / itemsPerPage);
 
@@ -49,12 +51,23 @@ function Events() {
   return (
     <div className="events">
       {/* <h1>Events</h1> */}
-      <ul>
+      <ul
+      style={{
+        marginLeft: isOpen ? "1.5em" : "4.5em",
+        gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
+        transition: "0.3s ease-in"
+      }}
+      >
         {currentItems.map((event) => (
           <li key={event.id}>
-            <img src={`${event.thumbnail.path}.${event.thumbnail.extension}`} alt={event.title} />
-            {event.title}<br></br>
-            Characters: {event.characters.available}
+            <Link 
+            style={{ width: isOpen? "14em":"18em", height: isOpen? "19em":"19em"}}
+            to={`/events/${event.id}`}>
+              <img
+              style={{ width: isOpen? "14em":"18em"}} 
+              src={`${event.thumbnail.path}.${event.thumbnail.extension}`} alt={event.title} />
+              {event.title}
+            </Link>
           </li>
         ))}
       </ul>

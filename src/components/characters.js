@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function Characters() {
+function Characters({isOpen}) {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(9);
+  const [itemsPerPage] = useState(12);
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -50,13 +51,22 @@ function Characters() {
   return (
     <div className="characters">
       {/* <h1>Characters</h1> */}
-      <ul>
+      <ul 
+      style={{
+        marginLeft: isOpen ? "1.5em" : "4.5em",
+        gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
+        transition: "0.3s ease-in"
+      }}>
         {currentItems.map((character) => (
           <li key={character.id}>
-            <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.title} />
-            {character.name}<br></br>
-            Available Series': {character.series.available}
-            Stories: {character.stories.available}
+            <Link 
+            style={{ width: isOpen? "14em":"18em", height: isOpen? "19em":"19em"}}
+            to={`/characters/${character.id}`}>
+              <img 
+              style={{ width: isOpen? "14em":"18em"}}
+              src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
+              {character.name}
+            </Link>
           </li>
         ))}
       </ul>

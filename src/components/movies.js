@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function Movies() {
+function Movies({isOpen}) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(9);
+  const [itemsPerPage] = useState(12);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -49,13 +50,23 @@ function Movies() {
   return (
     <div className="movies">
       {/* <h1>Movies</h1> */}
-      <ul>
+      <ul
+      style={{
+        marginLeft: isOpen ? "1.5em" : "4.5em",
+        gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
+        transition: "0.3s ease-in"
+      }}
+      >
         {currentItems.map((movie) => (
           <li key={movie.id}>
-            <img src={`${movie.thumbnail.path}.${movie.thumbnail.extension}`} alt={movie.title} />
-            {movie.title}<br></br>
-            {/* Creator: {movie.stories.items} */}
-            {/* Type: {movie.stories.resourceURI.type} */}
+            <Link 
+            style={{ width: isOpen? "14em":"18em", height: isOpen? "19em":"19em"}}
+            to={`/movies/${movie.id}`}>
+              <img 
+              style={{ width: isOpen? "14em":"18em"}}
+              src={`${movie.thumbnail.path}.${movie.thumbnail.extension}`} alt={movie.title} />
+              {movie.title}
+            </Link>
           </li>
         ))}
       </ul>

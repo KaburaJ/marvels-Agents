@@ -1,54 +1,86 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { faBars, faHome } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
+import { 
+  faBook,
+  faGamepad,
+  faFilm,
+  faHistory,
+  faPerson,
+  faPersonMilitaryRifle
+} from '@fortawesome/free-solid-svg-icons';
+import './App.css';
 
-function Navbar() {
-  const [showComponents, setShowComponents] = useState(true);
+function Navbar({ children, isOpen, toggleNavbar }) {
+  const menuItem = [
+    {
+      path: "/fetch",
+      name: "Home",
+      icon: <FontAwesomeIcon icon={faHome}/>
+    },
+    {
+      path: "/comics",
+      name: "Comics",
+      icon: <FontAwesomeIcon icon={faBook}/>,
+    },
+    {
+      path: "/characters",
+      name: "Characters",
+      icon: <FontAwesomeIcon icon={faGamepad}/>
+    },
+    {
+      path: "/movies",
+      name: "Movies",
+      icon: <FontAwesomeIcon icon={faFilm}/>
+    },
+    {
+      path: "/creators",
+      name: "Creators",
+      icon: <FontAwesomeIcon icon={faPerson}/>,
+    },
+    {
+      path: "/news",
+      name: "News",
+      icon: <FontAwesomeIcon icon={faHistory}/>,
+    },
+    {
+      path: "/events",
+      name: "Events",
+      icon: <FontAwesomeIcon icon={faPersonMilitaryRifle}/>,
+    }
+  ]
 
-  const handleButtonClick = () => {
-    setShowComponents(!showComponents);
+  const handleIconClick = () => {
+    toggleNavbar(!isOpen);
   };
 
   return (
-    <div className='navbar'>
-      <FontAwesomeIcon icon={faBars} onClick={handleButtonClick} className="FontAwesomeIcon" />
+    <div className={`navbar ${isOpen ? 'open' : 'closed'}`}>
+      <FontAwesomeIcon
+        icon={faBars}
+        onClick={handleIconClick}
+        className="FontAwesomeIcon"
+      />
 
-      <ul className={`navbar-list ${showComponents ? 'show' : ''}`}>
-        <li>
-          <Link to="/fetch">All</Link>
-        </li>
-        <li>
-          <Link to="/comics">Comics</Link>
-        </li>
-        <li>
-          <Link to="/characters">Characters</Link>
-        </li>
-        <li>
-          <Link to="/movies">Movies</Link>
-        </li>
-        <li>
-          <Link to="/creators">Creators</Link>
-        </li>
-        {/* <li>
-          <Link to="/games">Games</Link>
-        </li> */}
-        {/* <li>
-          <Link to="/videos">Videos</Link>
-        </li> */}
-        {/* <li>
-          <Link to="/more">More</Link>
-        </li> */}
-        <li>
-          <Link to="/news">News</Link>
-        </li>
-        {/* <li>
-          <Link to="/reviews">Reviews</Link>
-        </li> */}
-        <li>
-          <Link to="/events">Events</Link>
-        </li>
-      </ul>
+      {menuItem.map((item, index) => (
+        <NavLink
+          style={{ width: isOpen ? "1.2em" : "4.4em" }}
+          to={item.path}
+          key={index}
+          className="navbar-list"
+          activeClassName="active"
+        >
+          <div className='icon'>
+            <h2>{item.icon}</h2>
+          </div>
+          <div className="text">
+            <h1 style={{ display: isOpen ? "none" : "block" }}>{item.name}</h1>
+          </div>
+        </NavLink>
+      ))}
+
+      <main>{children}</main>
     </div>
   );
 }

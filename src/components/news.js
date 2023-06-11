@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function News() {
+
+function News({isOpen}) {
+  console.log(`News nav -- ${isOpen}`);
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(9);
+  const [itemsPerPage] = useState(12);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -47,14 +50,22 @@ function News() {
   }
 
   return (
-    <div className="news">
+    <div className={`news ${isOpen ? 'open' : 'closed'}`}>
       {/* <h1>News</h1> */}
-      <ul>
-        {currentItems.map((news) => (
-          <li key={news.id}>
-            {/* <img src={`${news.thumbnail.path}.${news.thumbnail.extension}`} alt={news.title} /> */}
-            {news.title}<br></br>
-            {/* Page Count: {news.pageCount} */}
+      <ul
+      style={{
+        marginLeft: isOpen ? "1.5em" : "4.8em",
+        gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
+        transition: "0.3s ease-in"
+      }}
+      >
+      {currentItems.map((newer) => (
+          <li key={newer.id}>
+            <Link 
+            style={{ width: isOpen? "22.6em":"26em"}}
+            to={`/news/${newer.id}`}>
+              <p>{newer.title}</p>
+            </Link>
           </li>
         ))}
       </ul>

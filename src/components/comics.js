@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
+import '../App.css';
 
-function Comics() {
+function Comics({isOpen}) {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(9);
+  const [itemsPerPage] = useState(12);
 
   useEffect(() => {
     const fetchComics = async () => {
       try {
-        // Perform the fetch request here to get the comics data
         const response = await fetch('https://gateway.marvel.com/v1/public/comics?ts=1&apikey=7c321818f6b1d697bb53281bfcedef68&hash=ad164c933ea6e6d88cda41dd9ba5d468');
         if (!response.ok) {
           throw new Error('Failed to fetch comics');
         }
         const data = await response.json();
-        setComics(data.data.results); // Update the comics state with the fetched data
+        setComics(data.data.results);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -28,7 +28,6 @@ function Comics() {
     fetchComics();
   }, []);
 
-  // Pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = comics.slice(indexOfFirstItem, indexOfLastItem);
@@ -49,18 +48,24 @@ function Comics() {
 
   return (
     <div className="comics">
-      {/* <h1>Comics</h1> */}
-      <ul>
+      <ul 
+      style={{
+        marginLeft: isOpen ? "1.5em" : "4.5em",
+        gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
+        transition: "0.3s ease-in"
+      }}
+      >
         {currentItems.map((comic) => (
-          <li key={comic.id} className='comicDetails'>
-          <Link to={`/comics/${comic.id}?`}>
-            <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
-          </Link>
-          <div>
-            {comic.title}
-            Page Count: {comic.pageCount}
-          </div>
-        </li>
+          <li style={{marginRight: isOpen? "2.2em": "1em"}} key={comic.id}>
+            <Link 
+            style={{ width: isOpen? "14em":"18em", height: isOpen? "19em":"19em"}}
+            to={`/comics/${comic.id}`}>
+              <img 
+              style={{ width: isOpen? "14em":"18em"}}
+              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
+              <p>{comic.title}</p>
+            </Link>
+          </li>
         ))}
       </ul>
       {totalPages > 1 && (
@@ -76,6 +81,7 @@ function Comics() {
           ))}
         </div>
       )}
+      <Outlet />
     </div>
   );
 }
