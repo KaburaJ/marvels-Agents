@@ -51,20 +51,19 @@ function Events({isOpen}) {
   return (
     <div className="events">
       {/* <h1>Events</h1> */}
-      <ul
+      <ul 
       style={{
-        marginLeft: isOpen ? ".4em" : "5.4em",
+        marginLeft: isOpen ? "1.5em" : "5.9em",
         gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
         transition: "0.3s ease-in",
-      }}
-      >
+      }}>
         {currentItems.map((event) => (
-          <li style={{marginRight: isOpen? "2.2em": "2.5em"}} key={event.id}>
+          <li style={{marginRight: isOpen? "2.2em": "2.9em"}} key={event.id}>
             <Link 
-            style={{ width: isOpen? "17em":"20em", height: isOpen? "19em":"19em"}}
+            style={{ width: isOpen? "14em":"17em", height: isOpen? "19em":"19em"}}
             to={`/events/${event.id}`}>
-              <img
-              style={{ width: isOpen? "17em":"20em"}} 
+              <img 
+              style={{ width: isOpen? "14em":"17em"}} 
               src={`${event.thumbnail.path}.${event.thumbnail.extension}`} alt={event.title} />
               {event.title}
             </Link>

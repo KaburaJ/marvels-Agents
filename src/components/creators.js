@@ -49,20 +49,19 @@ function Creators({ isOpen }) {
   return (
     <div className="creators">
       {/* <h1>Creators</h1> */}
-      <ul
+      <ul 
       style={{
-        marginLeft: isOpen ? ".4em" : "5.4em",
+        marginLeft: isOpen ? "1.9em" : "5.9em",
         gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
         transition: "0.3s ease-in",
-      }}
-      >
+      }}>
         {currentItems.map((creator) => (
-          <li style={{marginRight: isOpen? "2.2em": "2.5em"}} key={creator.id}>
+          <li style={{marginRight: isOpen? "2em": "2.9em"}} key={creator.id}>
             <Link 
-            style={{ width: isOpen? "17em":"20em", height: isOpen? "19em":"19em"}}
+            style={{ width: isOpen? "14em":"17em", height: isOpen? "19em":"19em"}}
             to={`/creators/${creator.id}`}>
-              <img
-              style={{ width: isOpen? "17em":"20em"}} 
+              <img 
+              style={{ width: isOpen? "14em":"17em"}}
               src={`${creator.thumbnail.path}.${creator.thumbnail.extension}`} alt={creator.fullName} />
               {creator.fullName}
             </Link>

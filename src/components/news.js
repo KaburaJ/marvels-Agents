@@ -54,7 +54,7 @@ function News({isOpen}) {
       {/* <h1>News</h1> */}
       <ul
       style={{
-        marginLeft: isOpen ? ".6em" : "5.4em",
+        marginLeft: isOpen ? "1.2em" : "5em",
         gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
         transition: "0.3s ease-in",
       }}
@@ -62,9 +62,9 @@ function News({isOpen}) {
       {currentItems.map((newer) => (
           <li style={{marginRight: isOpen? "1.2em": "2.5em"}}key={newer.id}>
             <Link 
-            style={{ width: isOpen? "22.6em":"26em"}}
+            style={{ width: isOpen? "20.6em":"24em"}}
             to={`/news/${newer.id}`}>
-              <p style={{ width: isOpen? "22.6em":"26em", padding: isOpen? ".6em":".6em", fontSize:"small"}}>{newer.title}</p>
+              <p style={{ width: isOpen? "20.6em":"24em", padding: isOpen? ".6em":".6em", fontSize:"small"}}>{newer.title}</p>
             </Link>
           </li>
         ))}

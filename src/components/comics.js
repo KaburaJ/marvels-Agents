@@ -50,19 +50,17 @@ function Comics({isOpen}) {
     <div className="comics">
       <ul 
       style={{
-        marginLeft: isOpen ? ".4em" : "5.4em",
-        marginRight: isOpen ? ".4em" : ".4em",
+        marginLeft: isOpen ? "1.5em" : "5.9em",
         gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
         transition: "0.3s ease-in",
-      }}
-      >
+      }}>
         {currentItems.map((comic) => (
-          <li style={{marginRight: isOpen? "2.2em": "2.5em"}} key={comic.id}>
+          <li style={{marginRight: isOpen? "2.2em": "2.9em"}} key={comic.id}>
             <Link 
-            style={{width: isOpen? "17em": "20em", height: isOpen? "19em":"19em"}}
+            style={{ width: isOpen? "14em":"17em", height: isOpen? "19em":"19em"}}
             to={`/comics/${comic.id}`}>
               <img 
-              style={{ width: isOpen? "17em":"20em"}}
+              style={{ width: isOpen? "14em":"17em"}}
               src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
               <p>{comic.title}</p>
             </Link>

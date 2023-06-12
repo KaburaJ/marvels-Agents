@@ -50,20 +50,19 @@ function Movies({isOpen}) {
   return (
     <div className="movies">
       {/* <h1>Movies</h1> */}
-      <ul
+      <ul 
       style={{
-        marginLeft: isOpen ? ".4em" : "5.4em",
+        marginLeft: isOpen ? "1.5em" : "5.9em",
         gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
         transition: "0.3s ease-in",
-      }}
-      >
+      }}>
         {currentItems.map((movie) => (
           <li style={{marginRight: isOpen? "2.2em": "2.5em"}} key={movie.id}>
             <Link 
-            style={{ width: isOpen? "17em":"20em", height: isOpen? "19em":"19em"}}
-            to={`/movies/${movie.id}`}>
+            style={{ width: isOpen? "14em":"17em", height: isOpen? "19em":"19em"}}
+            to={`/events/${movie.id}`}>
               <img 
-              style={{ width: isOpen? "17em":"20em"}}
+              style={{ width: isOpen? "14em":"17em"}} 
               src={`${movie.thumbnail.path}.${movie.thumbnail.extension}`} alt={movie.title} />
               {movie.title}
             </Link>
