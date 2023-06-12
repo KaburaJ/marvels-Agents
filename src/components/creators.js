@@ -51,7 +51,7 @@ function Creators({ isOpen }) {
       {/* <h1>Creators</h1> */}
       <ul
       style={{
-        marginLeft: isOpen ? "3.4em" : "5.4em",
+        marginLeft: isOpen ? "1.4em" : "5.4em",
         gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
         transition: "0.3s ease-in",
       }}
