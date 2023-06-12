@@ -3,6 +3,7 @@
 *{
   box-sizing: border-box;
   background-attachment: fixed;
+  width: max-content;
 }
 
 
@@ -43,9 +44,6 @@ body {
   font-size: 2em;
   letter-spacing: 0.08em;
   margin-top: .01em;
-  /* text-shadow: 2px 6px lightslategray; */
-  /* margin-left:1px;
-  margin-right: 1px; */
 }
 
 .content{
@@ -65,7 +63,7 @@ body {
 .profile{
   width: 3.1em;
   height: 2.9em;
-  margin-left: 2.3em;
+  margin-left: 6em;
   padding: .1em;
   border-color: 2px solid white;
   background: transparent;
@@ -73,7 +71,7 @@ body {
 
 .chevron-icon{
   margin-top: 2em;
-  margin-left: 79em;
+  margin-left: 88em;
   position: absolute;
   font-size: medium;
 }
@@ -97,7 +95,6 @@ body {
 }
 .dropdown-menu ul li{
   font-size: x-large;
-  font-family: magic1;
 }
 
 .fontAwesomeIcon {
@@ -105,7 +102,7 @@ body {
   color: rgba(254,251,245,255) !important;
   font-weight: 100;
   font-size: medium;
-  margin-left: 48em;
+  margin-left: 50em;
   padding-top: 1.8em;
   padding-left: 4em;
   cursor: pointer;
@@ -139,24 +136,11 @@ body {
   /* transition: 5s; */
 }
 
-.navbar .FontAwesomeIcon {
-  position: fixed;
-  background: transparent;
-  top: 1em;
-  left: .5em;
-  color: white;
-  font-size: x-large;
-  padding: 2px;
-  /* text-shadow: lightslategray; */
-  cursor: pointer;
-  transition:0.3s linear;
-}
-
 .navbar {
   position: fixed;
   background: transparent;
   display: flex;
-  /* width: 2em; */
+  width: 2em;
   background: rgba(254,251,245,259);
   flex-direction: column;
   align-items: start;
@@ -166,17 +150,28 @@ body {
   transition: 0.3s ease-in;
 }
 
-.navbar-list {
-  /* position: relative; */
+.navbar .FontAwesomeIcon {
+  position: fixed;
   background: transparent;
-  /* padding-top: 2em; */
+  top: 1em;
+  left: .6em;
+  color: white;
+  font-size: x-large;
+  padding: 2px;
+  /* text-shadow: lightslategray; */
+  cursor: pointer;
+  transition:0.3s linear;
+}
+
+.navbar-list {
+  position: relative;
+  background: transparent;
   justify-content: start;
   align-items: center;
   list-style: none;
   color: black;
   display: flex;
   height: 12.8vh;
-  gap: .5em;
   transition: 0.7s ease-in;
 }
 
@@ -439,8 +434,8 @@ p{
 }
 
 .slideshow{
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: .1em;
@@ -453,8 +448,8 @@ p{
 }
 
 .fetch{
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: .1em;
@@ -462,9 +457,9 @@ p{
   letter-spacing: 0.04em;
   text-align: center;
   color: white;
-  width: 50%;
+  width: 100%;
   margin-top: 2.2em;
-  margin-left: .4em;
+  margin-left: 4em;
   position: fixed;
   background: transparent;
   
@@ -484,7 +479,7 @@ p{
 .fetch img{
   border-top: 1.5px solid white;
   border-left: 1.5px solid white;
-  width: 31em;
+  width: 42em;
   height: 16em;
   object-fit: cover;
   object-position: center;

@@ -78,7 +78,8 @@ function App() {
         )}
         <Navbar isOpen={navbarIsOpen} toggleNavbar={toggleNavbar} />
           <Routes>
-            <Route path="/" element={<Fetch isOpen={navbarIsOpen} />} />
+          <Route path="/" element={<Fetch isOpen={navbarIsOpen} />} />
+            <Route path="/marvels-Agents/" element={<Fetch isOpen={navbarIsOpen} />} />
             <Route path="/fetch" element={<Fetch isOpen={navbarIsOpen} />} />
             <Route path="/comics" element={<Comics isOpen={navbarIsOpen} />} />
             <Route path="/comics/:id" element={<SingleComic />} />
