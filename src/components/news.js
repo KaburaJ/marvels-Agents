@@ -50,21 +50,21 @@ function News({isOpen}) {
   }
 
   return (
-    <div className={`news ${isOpen ? 'open' : 'closed'}`}>
+    <div className="news">
       {/* <h1>News</h1> */}
       <ul
       style={{
-        marginLeft: isOpen ? "1.5em" : "4.8em",
+        marginLeft: isOpen ? "2.6em" : "5.4em",
         gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
-        transition: "0.3s ease-in"
+        transition: "0.3s ease-in",
       }}
       >
       {currentItems.map((newer) => (
-          <li key={newer.id}>
+          <li style={{marginRight: isOpen? "1.2em": "2.5em"}}key={newer.id}>
             <Link 
             style={{ width: isOpen? "22.6em":"26em"}}
             to={`/news/${newer.id}`}>
-              <p>{newer.title}</p>
+              <p style={{ width: isOpen? "22.6em":"26em", padding: isOpen? ".6em":".6em", fontSize:"small"}}>{newer.title}</p>
             </Link>
           </li>
         ))}

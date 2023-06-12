@@ -71,7 +71,15 @@ const Fetch = ({isOpen}) => {
   return (
     <div 
     className="fetch"
-    style={{marginLeft: isOpen? ".1em": "4.5em", width: isOpen? "120%": "10%", display: "block", transitionX: ".7s ease-in"}}
+    style={{
+      marginLeft: isOpen ? "3.4em" : "5.4em",
+      gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
+      transition: "0.3s ease-in",
+      width: isOpen? "120%": "10%",
+      display: "block", 
+      transitionX: ".7s ease-in"
+    }}
+    // style={{marginLeft: isOpen? ".1em": "4.5em", width: isOpen? "120%": "10%", display: "block", transitionX: ".7s ease-in"}}
     >
       <Slideshow items={items} 
       

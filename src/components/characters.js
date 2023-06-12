@@ -53,17 +53,17 @@ function Characters({isOpen}) {
       {/* <h1>Characters</h1> */}
       <ul 
       style={{
-        marginLeft: isOpen ? "1.5em" : "4.5em",
+        marginLeft: isOpen ? "3.4em" : "5.4em",
         gridTemplateColumns: isOpen ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
-        transition: "0.3s ease-in"
+        transition: "0.3s ease-in",
       }}>
         {currentItems.map((character) => (
-          <li key={character.id}>
+          <li style={{marginRight: isOpen? "2.2em": "2.5em"}} key={character.id}>
             <Link 
-            style={{ width: isOpen? "14em":"18em", height: isOpen? "19em":"19em"}}
+            style={{ width: isOpen? "17em":"20em", height: isOpen? "19em":"19em"}}
             to={`/characters/${character.id}`}>
               <img 
-              style={{ width: isOpen? "14em":"18em"}}
+              style={{ width: isOpen? "17em":"20em"}}
               src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
               {character.name}
             </Link>

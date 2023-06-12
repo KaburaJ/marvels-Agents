@@ -141,6 +141,7 @@ body {
   background: transparent;
   display: flex;
   width: 2em;
+  gap: .4em;
   background: rgba(254,251,245,259);
   flex-direction: column;
   align-items: start;
@@ -171,12 +172,13 @@ body {
   list-style: none;
   color: black;
   display: flex;
-  height: 12.8vh;
+  height: 11.5vh;
   transition: 0.7s ease-in;
 }
 
 .icon h2{
   margin-left: .6em;
+  margin-right: .6em;
   font-size: x-large;
   font-weight: 300;
   color: rgba(145,19,8,255);
@@ -245,7 +247,7 @@ a:active {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 2.2em; 
+  margin-right: 4.2em; 
   margin-bottom: 2em;
   border-radius: 18px;
   font-size: medium;
@@ -349,6 +351,7 @@ div{
   display: flex;
   justify-content: center;
   /* margin-top: 1rem; */
+  margin: 0 auto;
   gap:1em;
   margin-bottom: 2em;
 }
@@ -376,7 +379,7 @@ div{
 .content {
   display: flex;
   flex-direction: row;
-  gap: 1em;
+  gap: 2em;
 }
 
 .content .news {
@@ -387,12 +390,12 @@ div{
   transition: scale(1.02);
 }
 
-.news img {
+/* .news img {
   width: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-}
+} */
 
 .news ul {
   margin-top: 2.5em;
@@ -400,8 +403,8 @@ div{
   grid-template-columns: repeat(4, 1fr);
   list-style: none;
   background: transparent;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-left: .5em;
+  margin-right: 1.5em;
 }
 
 .news li a {
@@ -415,7 +418,7 @@ div{
   width: 22.6em;
   height: 22.6em;
   font-size: small;
-  letter-spacing: 0.04em;
+  /* letter-spacing: 0.04em; */
   text-align: center;
   text-align: start;
   overflow: hidden;
@@ -431,6 +434,9 @@ div{
 p{
   font-size: large;
   padding: .6em;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .slideshow{
